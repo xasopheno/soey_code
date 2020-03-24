@@ -1,1 +1,3 @@
-console.log("hello Danny and Soey sup");
+for (let i = 0; i < 10; i = i + 3) {
+  console.log("hey", i);
+}
