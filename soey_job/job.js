@@ -1,4 +1,4 @@
-console.log("hello, soey");
+console.log("Hello, Soey");
 const axios = require("./node_modules/axios");
 
 async function getRequest() {
@@ -23,19 +23,29 @@ async function postRequest(point) {
   }
 }
 
-const newData = ["1234", "234.5"];
+// this is a anonymous function because top-level async is not
+// allowed in js yet.
+(async () => {
+  const newData = ["1234", "234.5"];
+  const getResult = await getRequest();
+  const postResult = await postRequest(newData);
 
-getRequest()
-  .then((r) => {
-    console.log(r);
-    return r;
-  })
-  .catch((e) => console.log(e));
+  console.log(getResult);
+  console.log(postResult);
+})();
 
-postRequest(newData)
-  .then((r) => {
-    console.log(r);
-    return r;
-  })
-  .catch((e) => console.log(e));
+// you could also do this...
+//  getRequest()
+//  .then((r) => {
+//  console.log(r);
+//  return r;
+//  })
+//  .catch((e) => console.log(e));
+
+//  postRequest(newData)
+//  .then((r) => {
+//  console.log(r);
+//  return r;
+//  })
+//  .catch((e) => console.log(e));
 
